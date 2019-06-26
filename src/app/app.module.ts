@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import ko from '@angular/common/locales/ko';
+import { TodoComponent } from './todo/todo.component';
 
 registerLocaleData(ko);
 
@@ -22,7 +23,8 @@ registerLocaleData(ko);
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    TodoComponent,
   ],
   imports: [
     BrowserModule,
