@@ -1,3 +1,25 @@
-<p>
-  todo works!
-</p>
+<div [className]="'container'">
+  <input nz-input placeholder="할 일을 입력하세요. (Press Enter)" [(ngModel)]="todoText" nzSize="large" (keypress)="handleKeyPress($event)" style="margin-bottom: 16px;"/>
+  <nz-list
+    [nzDataSource]="list"
+    [nzRenderItem]="item"
+    nzBordered
+    nzSize="large"
+  >
+    <ng-template #item let-item>
+      <nz-list-item [nzActions]="item.loading ? [] : [doneAction, removeAction]">
+        <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+          <ng-template #doneAction><label nz-checkbox [(ngModel)]="item.done">done</label></ng-template>
+          <ng-template #removeAction><a (click)="remove(item)">delete</a></ng-template>
+          <nz-list-item-meta
+            [nzTitle]="nzTitle"
+          >
+            <ng-template #nzTitle>
+              {{ item.label }}
+            </ng-template>
+          </nz-list-item-meta>
+        </nz-skeleton>
+      </nz-list-item>
+    </ng-template>
+  </nz-list>
+</div>
